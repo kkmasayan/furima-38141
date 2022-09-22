@@ -30,8 +30,7 @@
 | shipping_charges_id| integer             | null: false                  |
 | shipping_days_id   | integer             | null: false                  |
 | selling_price      | integer             | null: false                  |
-| selling_profit_id  | integer             | null: false                  |
-| user_id            | references          | null: false,foreign_key:true |
+| user               | references          | null: false,foreign_key:true |
 | category_id        | integer             | null: false                  |
 
 
@@ -52,7 +51,7 @@
 | address            | string              | null: false                  |
 | building_name      | string              |                              |
 | tell_number        | string              | null: false                  |
-| buyer_id           | references          | null: false,foreign_key:true |
+| buyer              | references          | null: false,foreign_key:true |
 
 
 ### Association
@@ -63,8 +62,8 @@
 
 | Column             | Type                | Options                      |
 |--------------------|---------------------|------------------------------|
-| user_id            | references          | null: false,foreign_key:true |
-| item_id            | references          | null: false,foreign_key:true |
+| user               | references          | null: false,foreign_key:true |
+| item               | references          | null: false,foreign_key:true |
 
 
 ### Association
