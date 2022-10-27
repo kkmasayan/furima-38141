@@ -14,7 +14,7 @@ class BuyerPayment
     validates :token
   end
   validates :tell_number, numericality: { with: true, message: 'is invalid. Input only number' }
-  validates :tell_number, length: { minimum: 10, maximum: 11, message: 'is too short' }
+  validates :tell_number, length: { minimum: 10, maximum: 11 }
 
   validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
 

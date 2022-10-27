@@ -74,12 +74,12 @@ RSpec.describe BuyerPayment, type: :model do
       it '電話番号が10桁以下であると保存できない' do
         @buyer_payment.tell_number = 12_345_678
         @buyer_payment.valid?
-        expect(@buyer_payment.errors.full_messages).to include('Tell number is too short')
+        expect(@buyer_payment.errors.full_messages).to include('Tell number is too short (minimum is 10 characters)')
       end
       it '電話番号が12桁以上であると保存できない' do
         @buyer_payment.tell_number = 12_345_678_999_999
         @buyer_payment.valid?
-        expect(@buyer_payment.errors.full_messages).to include('Tell number is too short')
+        expect(@buyer_payment.errors.full_messages).to include('Tell number is too long (maximum is 11 characters)')
       end
       it 'トークンが空だと保存できない' do
         @buyer_payment.token = nil
