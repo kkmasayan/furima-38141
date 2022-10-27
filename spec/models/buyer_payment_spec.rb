@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe BuyerPayment, type: :model do
   before do
-    @buyer_payment = FactoryBot.build(:buyer_payment)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @buyer_payment = FactoryBot.build(:buyer_payment, user_id: user.id, item_id: item.id)
+    sleep 0.1
   end
 
   describe '配送先情報の保存' do
@@ -70,6 +73,11 @@ RSpec.describe BuyerPayment, type: :model do
       end
       it '電話番号が10桁以下であると保存できない' do
         @buyer_payment.tell_number = 12_345_678
+        @buyer_payment.valid?
+        expect(@buyer_payment.errors.full_messages).to include('Tell number is too short')
+      end
+      it '電話番号が12桁以上であると保存できない' do
+        @buyer_payment.tell_number = 12_345_678_999_999
         @buyer_payment.valid?
         expect(@buyer_payment.errors.full_messages).to include('Tell number is too short')
       end
