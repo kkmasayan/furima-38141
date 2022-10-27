@@ -8,7 +8,8 @@ class Item < ApplicationRecord
   belongs_to :shipping_day
 
   has_one_attached :image
-
+  belongs_to :user
+  has_one :buyer
   with_options presence: true do
     validates :image, :name, :description, :category_id, :shipping_charges_id, :shipping_days_id, :prefecture_id,
               :status_condition_id, :user_id
